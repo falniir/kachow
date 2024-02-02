@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useRef, useEffect, useState } from "react";
-import { useMousePosition } from "/home/falunix/development/kachow/src/lib/utils/mouse";
+import { useMousePosition } from "@/lib/utils/mouse";
 
 interface ParticlesProps {
 	className?: string;
