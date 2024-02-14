@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import Particles from "@/components/particles";
 import Image from "next/image";
 import landingPagePic from "@/lib/images/gun.gif";
@@ -13,8 +13,16 @@ const navigation = [
   { name: "Contact", href: "/contact" },
 ];
 
+
+
 export default function Home() {
-  
+
+  const [dialogScale, setDialogScale] = useState(1);
+
+  const handleNoButtonClick = () => {
+    setDialogScale(prevScale => prevScale + 0.5); // Increase scale by 50%
+  };
+
 
 
   return (
@@ -58,8 +66,8 @@ export default function Home() {
           
           </h2>
           <div className="flex flex-row items-center justify-center ">
-           <button className="px-4 py-2 mt-4 text-sm font-bold text-white transition duration-500 bg-slate-500 rounded-full hover:bg-slate-400 hover:text-slate-300">NO :/</button>
-          <DialogPage
+           <button onClick={handleNoButtonClick} className="px-4 py-2 mt-4 text-sm font-bold text-white transition duration-500 bg-slate-500 rounded-full hover:bg-slate-400 hover:text-slate-300">NO :/</button>
+          <DialogPage scale={dialogScale}
             dialogText="YES!" dialogTitle="YAY!" dialogDescription="I love you too! <3"
             
           />
