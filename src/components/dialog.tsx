@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/dialog"
 import Image from "next/image";
 import catFlower from "@/lib/images/catflower.jpg";
+import { useState } from "react";
 interface DialogPageProps {
     dialogText?: string;
     dialogTitle?: string;
@@ -16,11 +17,24 @@ interface DialogPageProps {
 }
 
 
+const RandomVideoDialog: React.FC = () => {
+  const [videoPath, setVideoPath] = useState<string>('');
+
+  const fetchRandomVideo = async () => {
+    const response = await fetch('/api/randomVideo');
+    const data = await response.json();
+    setVideoPath(data.path);
+  };
+};
   
-export default function DialogPage({ dialogText, dialogTitle, dialogDescription, scale = 1 }: DialogPageProps) {
+export function DialogPageYes({ dialogText, dialogTitle, dialogDescription, scale = 1 }: DialogPageProps) {
   const dialogStyle = {
     transform: `scale(${scale})`
   };
+
+
+
+
 
     return (
       <Dialog>
@@ -29,10 +43,11 @@ export default function DialogPage({ dialogText, dialogTitle, dialogDescription,
           <DialogHeader>
             <DialogTitle>{dialogTitle}</DialogTitle>
             <DialogDescription>{dialogDescription}
-            <Image src={catFlower} alt="Picture of the author" width={500} height={500} />
+            <Image src={catFlower} alt="Picture of kitty holding flowers" width={500} height={500} />
             </DialogDescription>
           </DialogHeader>
         </DialogContent>
       </Dialog>
     )
-  }
+}
+  

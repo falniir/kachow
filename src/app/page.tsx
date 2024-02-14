@@ -1,5 +1,4 @@
 "use client";
-
 import Link from "next/link";
 import React, { useState } from "react";
 import Particles from "@/components/particles";
@@ -7,13 +6,8 @@ import Image from "next/image";
 import landingPagePic from "@/lib/images/gun.gif";
 import { Dialog } from "@/components/ui/dialog";
 import { DialogClose } from "@radix-ui/react-dialog";
-import DialogPage from "@/components/dialog";
-const navigation = [
-  { name: "Projects", href: "/projects" },
-  { name: "Contact", href: "/contact" },
-];
-
-
+import { DialogPageYes } from "@/components/dialog";
+import RandomVideoDialog from "@/components/randomvideodialog";
 
 export default function Home() {
 
@@ -29,15 +23,7 @@ export default function Home() {
       <div className="flex flex-col items-center justify-center w-screen h-screen overflow-hidden bg-gradient-to-tl from-pink-900 via-pink-950/40 to-pink-900">
         <nav className="my-16 animate-fade-right animate-once animate-duration-[3000ms] ">
           <ul className="flex items-center justify-center gap-4">
-            {navigation.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="text-sm animate-fade-right animate-once animate-duration-[3000ms] text-black hover:text-slate-300"
-              >
-                {item.name}
-              </Link>
-            ))}
+          <RandomVideoDialog />
 
           </ul>
         </nav>
@@ -63,19 +49,19 @@ export default function Home() {
             height={500}
               
             />
-          
           </h2>
           <div className="flex flex-row items-center justify-center ">
            <button onClick={handleNoButtonClick} className="px-4 py-2 mt-4 text-sm font-bold text-white transition duration-500 bg-slate-500 rounded-full hover:bg-slate-400 hover:text-slate-300">NO :/</button>
-          <DialogPage scale={dialogScale}
+          <DialogPageYes scale={dialogScale}
             dialogText="YES!" dialogTitle="YAY!" dialogDescription="I love you too! 💝"
             
           />
           </div>
 
-        </div>
-        
-        
+      </div>
+      
+      <div>
+      </div>
       </div>
       
     );
